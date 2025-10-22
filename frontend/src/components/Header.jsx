@@ -1,87 +1,113 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Mail, FileText } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Detect active section
+      const sections = ['home', 'projects', 'skills', 'about', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-[#0A0A0A]/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        isScrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-mono font-bold tracking-wider uppercase hover:text-[#00FF88] transition-colors">
-            RoboticsLab
-          </Link>
-          
+          <button
+            onClick={() => scrollToSection('home')}
+            className="label text-[#38FF62] hover:opacity-70 transition-opacity"
+          >
+            ROBOTICSLAB
+          </button>
+
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`text-sm font-mono uppercase tracking-wide transition-opacity hover:opacity-70 ${
-                location.pathname === '/' ? 'text-[#00FF88]' : 'text-white'
+            <button
+              onClick={() => scrollToSection('projects')}
+              className={`label-small transition-colors ${
+                activeSection === 'projects' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
               }`}
             >
-              Projects
-            </Link>
-            <Link 
-              to="/publications" 
-              className={`text-sm font-mono uppercase tracking-wide transition-opacity hover:opacity-70 ${
-                location.pathname === '/publications' ? 'text-[#00FF88]' : 'text-white'
+              PROJECTS
+            </button>
+            <button
+              onClick={() => scrollToSection('skills')}
+              className={`label-small transition-colors ${
+                activeSection === 'skills' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
               }`}
             >
-              Publications
-            </Link>
-            <Link 
-              to="/about" 
-              className={`text-sm font-mono uppercase tracking-wide transition-opacity hover:opacity-70 ${
-                location.pathname === '/about' ? 'text-[#00FF88]' : 'text-white'
+              SKILLS
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className={`label-small transition-colors ${
+                activeSection === 'about' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
               }`}
             >
-              About
-            </Link>
-            <Link 
-              to="/blog" 
-              className={`text-sm font-mono uppercase tracking-wide transition-opacity hover:opacity-70 ${
-                location.pathname === '/blog' ? 'text-[#00FF88]' : 'text-white'
+              ABOUT
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className={`label-small transition-colors ${
+                activeSection === 'contact' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
               }`}
             >
-              Blog
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`text-sm font-mono uppercase tracking-wide transition-opacity hover:opacity-70 ${
-                location.pathname === '/contact' ? 'text-[#00FF88]' : 'text-white'
-              }`}
-            >
-              Contact
-            </Link>
+              CONTACT
+            </button>
           </nav>
 
           <div className="flex items-center space-x-4">
-            <a 
-              href="/cv.pdf" 
-              target="_blank" 
+            <a
+              href="/cv.pdf"
+              target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:block px-4 py-2 border border-white/20 text-sm font-mono uppercase tracking-wide hover:bg-white/5 transition-all"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 border border-white/20 label-small hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
             >
-              View CV
+              <FileText size={14} />
+              CV
             </a>
-            <a 
-              href="mailto:engineer@robotics.edu" 
-              className="px-4 py-2 bg-[#00FF88] text-black text-sm font-mono uppercase tracking-wide hover:bg-[#00DD77] transition-colors"
+            <a
+              href="mailto:alex@robotics.edu"
+              className="flex items-center gap-2 px-4 py-2 bg-[#38FF62] text-[#0a0a0a] label-small hover:bg-[#2AE052] transition-colors"
             >
-              Email
+              <Mail size={14} />
+              EMAIL
             </a>
           </div>
         </div>
