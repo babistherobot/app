@@ -1,61 +1,99 @@
 import React from 'react';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
+import { personalInfo } from '../mockData';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: Github, href: personalInfo.github, label: 'GitHub' },
+    { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+    { icon: BookOpen, href: personalInfo.scholar, label: 'Google Scholar' },
+    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Email' }
+  ];
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const footerLinks = [
+    { name: 'HOME', sectionId: 'home' },
+    { name: 'PROJECTS', sectionId: 'projects' },
+    { name: 'SKILLS', sectionId: 'skills' },
+    { name: 'ABOUT', sectionId: 'about' },
+    { name: 'CONTACT', sectionId: 'contact' }
+  ];
+
   return (
-    <footer className="relative bg-[#0a0a0a] border-t border-white/10 py-12">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="label text-[#38FF62] mb-2">
+    <footer className="relative border-t border-[#2a2a2a] bg-[#0a0a0a] mt-32">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Logo & Description */}
+          <div>
+            <div className="label text-[#38FF62] mb-6">
               ROBOTICSLAB
-            </h3>
-            <p className="label-small">
-              Building the future of autonomous systems
+            </div>
+            <p className="text-body max-w-xs">
+              {personalInfo.tagline}
             </p>
           </div>
 
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com/username"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 border border-[#2a2a2a] flex items-center justify-center hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
-              aria-label="GitHub"
-            >
-              <Github size={18} />
-            </a>
-            <a
-              href="https://linkedin.com/in/username"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 border border-[#2a2a2a] flex items-center justify-center hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={18} />
-            </a>
-            <a
-              href="mailto:alex@robotics.edu"
-              className="w-10 h-10 border border-[#2a2a2a] flex items-center justify-center hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
-              aria-label="Email"
-            >
-              <Mail size={18} />
-            </a>
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 border border-[#2a2a2a] flex items-center justify-center hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
-              aria-label="CV"
-            >
-              <FileText size={18} />
-            </a>
+          {/* Quick Links */}
+          <div>
+            <h3 className="label mb-6">QUICK LINKS</h3>
+            <nav className="flex flex-col gap-3">
+              {footerLinks.map((link) => (
+                <button
+                  key={link.sectionId}
+                  onClick={() => scrollToSection(link.sectionId)}
+                  className="text-body hover:text-[#38FF62] transition-colors text-left"
+                >
+                  {link.name}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h3 className="label mb-6">CONNECT</h3>
+            <div className="flex gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 border border-[#2a2a2a] flex items-center justify-center hover:border-[#38FF62] hover:text-[#38FF62] transition-all"
+                    aria-label={social.label}
+                  >
+                    <Icon size={18} />
+                  </a>
+                );
+              })}
+            </div>
+            <p className="text-body mt-6">
+              {personalInfo.location}
+            </p>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/10 text-center">
-          <p className="label-small text-white/50">
-            © 2024 ROBOTICSLAB. BUILDING FOR INNOVATION.
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#2a2a2a] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="label-small">
+            © {currentYear} {personalInfo.name.toUpperCase()}. ALL RIGHTS RESERVED.
+          </p>
+          <p className="label-small">
+            DESIGNED & BUILT WITH PRECISION
           </p>
         </div>
       </div>
