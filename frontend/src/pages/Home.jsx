@@ -569,12 +569,12 @@ const Home = () => {
                   SEND EMAIL
                 </a>
                 <a
-                  href={personalInfo.cv}
+                  href={personalInfo.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
-                  DOWNLOAD CV
+                  DOWNLOAD RESUME
                 </a>
               </div>
             </motion.div>
