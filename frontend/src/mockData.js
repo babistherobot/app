@@ -178,10 +178,14 @@ export const allProjects = [
 ];
 
 export const skills = {
-  "PROGRAMMING": ["Python", "C++", "C", "MATLAB"],
-  "ROBOTICS": ["ROS 2", "Gazebo", "MoveIt", "Nav2"],
-  "AI/ML": ["PyTorch", "TensorFlow", "OpenCV", "scikit-learn"],
-  "PLATFORMS": ["TurtleBot3", "Unitree Go2", "SO-101", "STM32"]
+  "PROGRAMMING": ["Python", "C++", "C", "MATLAB", "JavaScript", "Rust"],
+  "ROBOTICS": ["ROS 2", "Gazebo", "MoveIt", "Nav2", "Isaac Sim", "Webots"],
+  "AI/ML": ["PyTorch", "TensorFlow", "OpenCV", "scikit-learn", "Keras", "ONNX"],
+  "PLATFORMS": ["TurtleBot3", "Unitree Go2", "SO-101", "STM32", "Raspberry Pi", "NVIDIA Jetson"],
+  "SIMULATION": ["Isaac Sim", "Gazebo", "CoppeliaSim", "PyBullet", "MuJoCo"],
+  "CONTROL": ["MPC", "PID", "LQR", "FOC", "State Estimation", "Kalman Filter"],
+  "VISION": ["SLAM", "Object Detection", "Semantic Segmentation", "Point Cloud", "Depth Estimation"],
+  "TOOLS": ["Git", "Docker", "Linux", "CMake", "CI/CD", "Jupyter"]
 };
 
 export const publications = [
