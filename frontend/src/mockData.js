@@ -41,57 +41,57 @@ export const about = {
 export const featuredProjects = [
   {
     id: 1,
-    slug: "comuros",
-    title: "CoMuRoS: Multi-Robot Manager-Worker LLM System",
-    shortDesc: "Collaborative multi-robot orchestration using Large Language Models for intelligent task allocation and real-time coordination.",
-    category: ["AI/ML", "Multi-Robot"],
-    tech: ["Python", "ROS 2", "LLMs", "Multi-Agent"],
+    slug: "isaac-sim-manipulation",
+    title: "Isaac Sim Robotic Manipulation",
+    shortDesc: "Advanced robotic manipulation training using NVIDIA Isaac Sim with reinforcement learning for precise object handling and assembly tasks.",
+    category: ["AI/ML", "Vision"],
+    tech: ["Python", "Isaac Sim", "PyTorch", "ROS 2", "USD"],
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800",
     metrics: {
-      performance: "35% faster task completion",
-      accuracy: "92% success rate"
+      performance: "40% faster training",
+      accuracy: "94% success rate"
     },
     featured: true,
     links: {
-      github: "https://github.com/username/comuros",
+      github: "https://github.com/username/isaac-sim-manipulation",
       demo: "https://demo.com",
       paper: null
     }
   },
   {
     id: 2,
-    slug: "robotic-arm",
-    title: "Vision-Guided Robotic Arm Control",
-    shortDesc: "Real-time object manipulation using SO-101 arm with advanced computer vision and depth perception for precise pick-and-place operations.",
-    category: ["Vision", "Control"],
-    tech: ["Python", "OpenCV", "ROS 2", "MoveIt"],
+    slug: "groot-finetuning",
+    title: "GR00T Model Fine-tuning",
+    shortDesc: "Fine-tuning NVIDIA's GR00T foundation model for humanoid robot control with custom task-specific behaviors and motion primitives.",
+    category: ["AI/ML", "Control"],
+    tech: ["Python", "GR00T", "Isaac Lab", "PyTorch", "ROS 2"],
     image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800",
     metrics: {
-      performance: "0.5mm precision",
-      accuracy: "95% grasp success"
+      performance: "2.5x faster adaptation",
+      accuracy: "91% task completion"
     },
     featured: true,
     links: {
-      github: "https://github.com/username/robotic-arm",
+      github: "https://github.com/username/groot-finetuning",
       demo: null,
       paper: null
     }
   },
   {
     id: 3,
-    slug: "turtlebot-nav",
-    title: "TurtleBot3 Autonomous Navigation",
-    shortDesc: "Multi-layer path planning system with dynamic obstacle avoidance and semantic mapping for complex indoor environments.",
-    category: ["Control", "Vision"],
-    tech: ["C++", "ROS 2", "Nav2", "SLAM"],
+    slug: "multi-robot-mpc",
+    title: "Multi-Robot MPC Controller",
+    shortDesc: "Model Predictive Control system for coordinated multi-robot navigation with collision avoidance and dynamic obstacle handling.",
+    category: ["Multi-Robot", "Control"],
+    tech: ["C++", "Python", "MPC", "ROS 2", "CasADi"],
     image: "https://images.unsplash.com/photo-1563968743333-044cef800494?w=800",
     metrics: {
-      performance: "15% faster navigation",
-      accuracy: "98% obstacle detection"
+      performance: "Zero collisions",
+      accuracy: "98% path accuracy"
     },
     featured: true,
     links: {
-      github: "https://github.com/username/turtlebot-nav",
+      github: "https://github.com/username/multi-robot-mpc",
       demo: "https://demo.com",
       paper: "https://paper.com"
     }
