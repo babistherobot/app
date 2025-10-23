@@ -53,10 +53,10 @@ code {
   color: #0a0a0a;
 }
 
-/* Typography Classes - Reduced font sizes */
+/* Typography Classes - Better proportioned font sizes */
 .hero-title { 
   font-family: var(--font-sans);
-  font-size: clamp(48px, 12vw, 180px); 
+  font-size: clamp(40px, 8vw, 120px); 
   font-weight: 700; 
   color: #ffffff; 
   line-height: 1; 
@@ -66,41 +66,41 @@ code {
 
 .title-big { 
   font-family: var(--font-sans);
-  font-size: clamp(32px, 6vw, 100px); 
+  font-size: clamp(28px, 4vw, 60px); 
   font-weight: 700; 
   color: #ffffff; 
-  line-height: 1; 
+  line-height: 1.1; 
   text-transform: uppercase;
   letter-spacing: -0.02em;
 }
 
 .text-big { 
   font-family: var(--font-sans);
-  font-size: clamp(18px, 3vw, 32px); 
+  font-size: clamp(16px, 2vw, 22px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.8); 
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .text-regular { 
   font-family: var(--font-sans);
-  font-size: clamp(16px, 2vw, 24px); 
+  font-size: clamp(15px, 1.5vw, 18px); 
   font-weight: 600; 
   color: #ffffff; 
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .text-body { 
   font-family: var(--font-sans);
-  font-size: clamp(13px, 1.5vw, 16px); 
+  font-size: clamp(13px, 1.2vw, 15px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.7); 
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .label { 
   font-family: var(--font-mono);
-  font-size: clamp(11px, 1.2vw, 14px); 
+  font-size: clamp(11px, 1vw, 13px); 
   font-weight: 400; 
   color: #38FF62; 
   line-height: 1; 
@@ -110,7 +110,7 @@ code {
 
 .label-small { 
   font-family: var(--font-mono);
-  font-size: clamp(9px, 1vw, 11px); 
+  font-size: clamp(9px, 0.85vw, 11px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.6); 
   line-height: 1.25; 
