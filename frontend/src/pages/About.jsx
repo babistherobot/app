@@ -1,42 +1,72 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { personalInfo, about } from '../mockData';
 import { mockSkills } from '../mockData';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white">
+    <div className="min-h-screen bg-[#0A0A0A] text-white relative">
+      <div className="grid-background" />
+      
       <div className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl">
           {/* Header */}
-          <div className="mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#00FF88]">
+          <motion.div 
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-xs font-mono uppercase tracking-widest text-[#38FF62]">
               Background
             </span>
             <h1 className="text-5xl md:text-6xl font-bold mt-4 mb-6">About Me</h1>
-          </div>
+          </motion.div>
 
-          {/* Bio */}
-          <section className="mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <div className="md:col-span-2">
-                <p className="text-lg text-white/90 leading-relaxed mb-6">
+          {/* Profile & Bio */}
+          <motion.section 
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="flex flex-col md:flex-row gap-12 items-start">
+              {/* Large Profile Image */}
+              <div className="flex-shrink-0 mx-auto md:mx-0">
+                <motion.div 
+                  className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#38FF62] shadow-2xl shadow-[#38FF62]/30"
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={personalInfo.profileImage}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Bio Content */}
+              <div className="flex-1 space-y-6">
+                <p className="text-lg text-white/90 leading-relaxed">
                   I'm a robotics engineer focused on building intelligent autonomous systems that bridge the gap between AI research and real-world deployment. My work spans multi-robot coordination, vision-language models, and control systems for complex robotic platforms.
                 </p>
-                <p className="text-lg text-white/90 leading-relaxed mb-6">
+                <p className="text-lg text-white/90 leading-relaxed">
                   Currently working with cutting-edge platforms including TurtleBot3, Unitree Go2 quadrupeds, and SO-101 robotic arms. My research has been presented at IROS and deployed in production environments at IITGN.
                 </p>
                 <p className="text-lg text-white/90 leading-relaxed">
                   I specialize in developing practical solutions for autonomous navigation, sensor fusion, and multi-agent systems. My recent work on CoMuRoS demonstrates how Large Language Models can revolutionize multi-robot coordination.
                 </p>
-              </div>
-              <div className="md:col-span-1">
-                <div className="bg-[#141414] border border-white/10 p-6">
+
+                {/* Quick Facts Card */}
+                <div className="bg-[#141414] border border-white/10 p-6 mt-8">
                   <h3 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
                     Quick Facts
                   </h3>
                   <div className="space-y-4">
                     <div>
                       <div className="text-sm font-mono text-white/50">Location</div>
-                      <div className="text-base">Gandhinagar, India</div>
+                      <div className="text-base">{personalInfo.location}</div>
                     </div>
                     <div>
                       <div className="text-sm font-mono text-white/50">Institution</div>
@@ -50,7 +80,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Education */}
           <section className="mb-16">
