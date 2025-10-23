@@ -92,9 +92,9 @@ const Header = () => {
               HOME
             </button>
             <button
-              onClick={() => scrollToSection('projects')}
+              onClick={handleProjectsClick}
               className={`label-small transition-colors ${
-                activeSection === 'projects' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
+                activeSection === 'projects' || location.pathname === '/projects' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
               }`}
             >
               PROJECTS
