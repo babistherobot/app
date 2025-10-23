@@ -1,12 +1,12 @@
 export const personalInfo = {
   name: "Bhavish Rai B",
-  tagline: "Building intelligent robots that think, see, and collaborate.",
+  tagline: "Bridging the gap between AI research and real-world robotics. Developing autonomous systems that perceive, reason, and act intelligently.",
   email: "alex@robotics.edu",
   location: "IIT Gandhinagar, India",
   github: "https://github.com/username",
   linkedin: "https://linkedin.com/in/username",
   scholar: "https://scholar.google.com/",
-  cv: "/cv.pdf",
+  resume: "/resume.pdf",
   profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
 };
 
