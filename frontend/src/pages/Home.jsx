@@ -92,6 +92,9 @@ const Home = () => {
               <p className="label mb-4">SELECTED WORK</p>
               <h2 className="title-big">FEATURED PROJECTS</h2>
             </div>
+            <Link to="/projects" className="btn-primary">
+              VIEW ALL PROJECTS
+            </Link>
           </div>
 
           <div className="space-y-8">
