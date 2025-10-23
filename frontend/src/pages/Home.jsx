@@ -155,34 +155,6 @@ const Home = () => {
                         transition={{ duration: 0.5 }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
-                      
-                      {/* Quick View on Hover */}
-                      <div className="absolute inset-0 bg-[#0a0a0a]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6">
-                        <p className="label-small mb-4 text-[#38FF62]">TECH STACK</p>
-                        <div className="flex flex-wrap gap-2 justify-center mb-6">
-                          {project.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="label-small px-2 py-1 border border-[#38FF62] text-[#38FF62]"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        {project.links?.demo && (
-                          <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="btn-accent inline-flex items-center gap-2"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              window.open(project.links.demo, '_blank');
-                            }}
-                          >
-                            <Play size={14} />
-                            VIEW DEMO
-                          </motion.div>
-                        )}
-                      </div>
                     </div>
 
                     {/* Content */}
