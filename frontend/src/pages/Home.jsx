@@ -92,38 +92,61 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Featured Projects Section */}
+      {/* Projects Section with Filters */}
       <section id="projects" className="relative py-24">
         <div className="container mx-auto px-6">
           <div className="mb-16">
-            <p className="label mb-4">SELECTED WORK</p>
-            <h2 className="title-big">FEATURED PROJECTS</h2>
+            <p className="label mb-4">ALL WORK</p>
+            <h2 className="title-big">PROJECTS</h2>
+            <p className="text-big max-w-3xl mt-8">
+              A collection of robotics projects spanning AI/ML, multi-robot systems, computer vision, and control theory.
+            </p>
           </div>
 
-          <div className="space-y-8">
-            {featuredProjects.map((project, index) => (
+          {/* Filters */}
+          <div className="flex flex-wrap gap-3 mb-12">
+            {categories.map((category) => (
+              <motion.button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`label px-4 py-3 border transition-all ${
+                  activeFilter === category
+                    ? 'border-[#38FF62] bg-[#38FF62] text-[#0a0a0a]'
+                    : 'border-[#2a2a2a] hover:border-[#38FF62]'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <motion.div
-                  className="card group cursor-pointer relative overflow-hidden"
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {/* Featured Ribbon */}
-                  <div className="absolute top-0 right-0 z-10">
-                    <div className="bg-[#38FF62] text-[#0a0a0a] px-4 py-2 label-small">
-                      FEATURED
-                    </div>
-                  </div>
+                <Link to={`/project/${project.slug}`} className="block">
+                  <motion.div
+                    className="card group cursor-pointer h-full flex flex-col relative overflow-hidden"
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {/* Featured Ribbon */}
+                    {project.featured && (
+                      <div className="absolute top-4 right-4 z-10 label-small px-3 py-2 bg-[#38FF62] text-[#0a0a0a] flex items-center gap-2">
+                        <Star size={12} fill="#0a0a0a" />
+                        FEATURED
+                      </div>
+                    )}
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Image */}
-                    <div className="relative aspect-video overflow-hidden bg-[#1a1a1a]">
+                    <div className="relative aspect-video overflow-hidden bg-[#1a1a1a] mb-6">
                       <motion.img
                         src={project.image}
                         alt={project.title}
@@ -132,89 +155,114 @@ const Home = () => {
                         transition={{ duration: 0.5 }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col justify-between">
-                      <div>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.category.map((cat) => (
-                            <span key={cat} className="label px-3 py-1 border border-[#2a2a2a]">
-                              {cat}
-                            </span>
-                          ))}
-                        </div>
-                        <h3 className="text-regular mb-4 group-hover:text-[#38FF62] transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-body mb-6">{project.shortDesc}</p>
-
-                        {/* Metrics */}
-                        {project.metrics && (
-                          <div className="grid grid-cols-2 gap-4 mb-6">
-                            <div>
-                              <p className="label-small mb-2">PERFORMANCE</p>
-                              <p className="text-body font-semibold">{project.metrics.performance}</p>
-                            </div>
-                            <div>
-                              <p className="label-small mb-2">ACCURACY</p>
-                              <p className="text-body font-semibold">{project.metrics.accuracy}</p>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Tech Stack & Links */}
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex flex-wrap gap-2 mb-4">
+                      
+                      {/* Quick View on Hover */}
+                      <div className="absolute inset-0 bg-[#0a0a0a]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6">
+                        <p className="label-small mb-4 text-[#38FF62]">TECH STACK</p>
+                        <div className="flex flex-wrap gap-2 justify-center mb-6">
                           {project.tech.map((tech) => (
                             <span
                               key={tech}
-                              className="label-small px-2 py-1 bg-[#1a1a1a] text-[#38FF62]"
+                              className="label-small px-2 py-1 border border-[#38FF62] text-[#38FF62]"
                             >
                               {tech}
                             </span>
                           ))}
                         </div>
-                        <div className="flex gap-4">
-                          {project.links.github && (
-                            <a
-                              href={project.links.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-ghost p-0 flex items-center gap-2"
-                            >
-                              <Github size={16} /> CODE
-                            </a>
-                          )}
-                          {project.links.demo && (
-                            <a
-                              href={project.links.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-accent px-4 py-2 flex items-center gap-2"
-                            >
-                              <Play size={16} /> DEMO
-                            </a>
-                          )}
-                          {project.links.paper && (
-                            <a
-                              href={project.links.paper}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-ghost p-0 flex items-center gap-2"
-                            >
-                              <ExternalLink size={16} /> PAPER
-                            </a>
-                          )}
-                        </div>
+                        {project.links?.demo && (
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="btn-accent inline-flex items-center gap-2"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.open(project.links.demo, '_blank');
+                            }}
+                          >
+                            <Play size={14} />
+                            VIEW DEMO
+                          </motion.div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                </motion.div>
+
+                    {/* Content */}
+                    <div className="flex flex-col flex-grow">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.category.map((cat) => (
+                          <span key={cat} className="label-small px-3 py-1 border border-[#2a2a2a]">
+                            {cat}
+                          </span>
+                        ))}
+                      </div>
+
+                      <h3 className="text-regular mb-4 group-hover:text-[#38FF62] transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-body mb-6 flex-grow">{project.shortDesc}</p>
+
+                      {/* Metrics */}
+                      {project.metrics && (
+                        <div className="grid grid-cols-2 gap-4 mb-4 pt-4 border-t border-[#2a2a2a]">
+                          <div>
+                            <p className="label-small mb-1 text-[#38FF62]">PERFORMANCE</p>
+                            <p className="text-body">{project.metrics.performance}</p>
+                          </div>
+                          <div>
+                            <p className="label-small mb-1 text-[#38FF62]">ACCURACY</p>
+                            <p className="text-body">{project.metrics.accuracy}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Links */}
+                      <div className="flex gap-4 pt-4 border-t border-[#2a2a2a]">
+                        {project.links?.github && (
+                          <a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost p-0 flex items-center gap-2"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Github size={14} /> CODE
+                          </a>
+                        )}
+                        {project.links?.demo && (
+                          <a
+                            href={project.links.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost p-0 flex items-center gap-2"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Play size={14} /> DEMO
+                          </a>
+                        )}
+                        {project.links?.paper && (
+                          <a
+                            href={project.links.paper}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost p-0 flex items-center gap-2"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink size={14} /> PAPER
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
               </motion.div>
             ))}
           </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-body">No projects found in this category.</p>
+            </div>
+          )}
         </div>
       </section>
 
