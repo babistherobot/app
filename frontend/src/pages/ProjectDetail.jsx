@@ -1,18 +1,18 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Github, Play, ExternalLink } from 'lucide-react';
-import { mockProjects } from '../mockData';
+import { allProjects } from '../mockData';
 
 const ProjectDetail = () => {
-  const { id } = useParams();
-  const project = mockProjects.find(p => p.id === parseInt(id));
+  const { slug } = useParams();
+  const project = allProjects.find(p => p.slug === slug);
 
   if (!project) {
     return (
       <div className="min-h-screen bg-[#0A0A0A] text-white pt-32 px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link to="/" className="text-[#00FF88] hover:underline">
+          <Link to="/projects" className="text-[#38FF62] hover:underline">
             Back to Projects
           </Link>
         </div>
@@ -26,8 +26,8 @@ const ProjectDetail = () => {
         <div className="container mx-auto max-w-4xl">
           {/* Back Button */}
           <Link 
-            to="/" 
-            className="inline-flex items-center text-white/70 hover:text-[#00FF88] transition-colors mb-12"
+            to="/projects" 
+            className="inline-flex items-center text-white/70 hover:text-[#38FF62] transition-colors mb-12"
           >
             <ArrowLeft size={20} className="mr-2" />
             <span className="font-mono text-sm uppercase tracking-wide">Back to Projects</span>
