@@ -227,3 +227,10 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #2AE052;
 }
+
+/* Container width constraints */
+.container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
