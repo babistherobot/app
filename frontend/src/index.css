@@ -26,7 +26,7 @@ code {
   font-family: var(--font-mono);
 }
 
-/* Grid Background */
+/* Grid Background - White grid lines */
 .grid-background {
   position: fixed;
   top: 0;
@@ -35,8 +35,8 @@ code {
   bottom: 0;
   background-color: #0a0a0a;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
   background-size: 47.6px 47.6px;
   pointer-events: none;
   z-index: -1;
@@ -53,10 +53,10 @@ code {
   color: #0a0a0a;
 }
 
-/* Typography Classes */
+/* Typography Classes - Reduced font sizes */
 .hero-title { 
   font-family: var(--font-sans);
-  font-size: clamp(60px, 15vw, 280px); 
+  font-size: clamp(48px, 12vw, 180px); 
   font-weight: 700; 
   color: #ffffff; 
   line-height: 1; 
@@ -66,7 +66,7 @@ code {
 
 .title-big { 
   font-family: var(--font-sans);
-  font-size: clamp(40px, 8vw, 150px); 
+  font-size: clamp(32px, 6vw, 100px); 
   font-weight: 700; 
   color: #ffffff; 
   line-height: 1; 
@@ -76,7 +76,7 @@ code {
 
 .text-big { 
   font-family: var(--font-sans);
-  font-size: clamp(24px, 4vw, 48px); 
+  font-size: clamp(18px, 3vw, 32px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.8); 
   line-height: 1.2;
@@ -84,7 +84,7 @@ code {
 
 .text-regular { 
   font-family: var(--font-sans);
-  font-size: clamp(18px, 2.5vw, 32px); 
+  font-size: clamp(16px, 2vw, 24px); 
   font-weight: 600; 
   color: #ffffff; 
   line-height: 1.2;
@@ -92,7 +92,7 @@ code {
 
 .text-body { 
   font-family: var(--font-sans);
-  font-size: clamp(14px, 1.8vw, 18px); 
+  font-size: clamp(13px, 1.5vw, 16px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.7); 
   line-height: 1.5;
@@ -100,7 +100,7 @@ code {
 
 .label { 
   font-family: var(--font-mono);
-  font-size: clamp(12px, 1.5vw, 18px); 
+  font-size: clamp(11px, 1.2vw, 14px); 
   font-weight: 400; 
   color: #38FF62; 
   line-height: 1; 
@@ -110,7 +110,7 @@ code {
 
 .label-small { 
   font-family: var(--font-mono);
-  font-size: clamp(10px, 1.2vw, 12px); 
+  font-size: clamp(9px, 1vw, 11px); 
   font-weight: 400; 
   color: rgba(255, 255, 255, 0.6); 
   line-height: 1.25; 

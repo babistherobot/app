@@ -54,10 +54,18 @@ const Header = () => {
             onClick={() => scrollToSection('home')}
             className="label text-[#38FF62] hover:opacity-70 transition-opacity"
           >
-            ROBOTICSLAB
+            braib
           </button>
 
           <nav className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => scrollToSection('home')}
+              className={`label-small transition-colors ${
+                activeSection === 'home' ? 'text-[#38FF62]' : 'text-white hover:text-[#38FF62]'
+              }`}
+            >
+              HOME
+            </button>
             <button
               onClick={() => scrollToSection('projects')}
               className={`label-small transition-colors ${
