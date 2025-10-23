@@ -102,41 +102,41 @@ export const allProjects = [
   ...featuredProjects,
   {
     id: 4,
-    slug: "quadruped-gait",
-    title: "Unitree Go2 Adaptive Gait Control",
-    shortDesc: "Terrain-adaptive locomotion system for quadruped robots with reinforcement learning-based gait optimization.",
-    category: ["AI/ML", "Control"],
-    tech: ["Python", "PyTorch", "ROS 2", "Gazebo"],
+    slug: "vision-language-manipulation",
+    title: "Vision-Language Robot Manipulation",
+    shortDesc: "Natural language-driven robotic manipulation using vision-language models for intuitive human-robot interaction.",
+    category: ["AI/ML", "Vision"],
+    tech: ["Python", "CLIP", "ROS 2", "OpenCV", "PyTorch"],
     image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=800",
     featured: false,
     links: {
-      github: "https://github.com/username/quadruped",
+      github: "https://github.com/username/vision-language-manipulation",
       demo: null,
       paper: null
     }
   },
   {
     id: 5,
-    slug: "sensor-fusion",
-    title: "Multi-Sensor Fusion Framework",
-    shortDesc: "Robust state estimation combining LiDAR, IMU, and camera data using Extended Kalman Filter for mobile robots.",
-    category: ["Vision", "Control"],
-    tech: ["C++", "ROS 2", "PCL", "OpenCV"],
+    slug: "legged-locomotion",
+    title: "Quadruped Legged Locomotion",
+    shortDesc: "RL-based adaptive locomotion for quadruped robots on challenging terrains with real-time gait optimization.",
+    category: ["AI/ML", "Control"],
+    tech: ["Python", "Isaac Gym", "PyTorch", "ROS 2"],
     image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800",
     featured: false,
     links: {
-      github: "https://github.com/username/sensor-fusion",
-      demo: null,
+      github: "https://github.com/username/legged-locomotion",
+      demo: "https://demo.com",
       paper: null
     }
   },
   {
     id: 6,
-    slug: "warehouse-fleet",
-    title: "Warehouse Fleet Coordination",
-    shortDesc: "Multi-robot task allocation and collision-free path planning for autonomous warehouse operations at scale.",
+    slug: "swarm-coordination",
+    title: "Swarm Robot Coordination",
+    shortDesc: "Decentralized multi-agent coordination for robot swarms with emergent collective behaviors and task allocation.",
     category: ["Multi-Robot", "AI/ML"],
-    tech: ["Python", "ROS 2", "Graph Theory", "Optimization"],
+    tech: ["Python", "ROS 2", "Graph Theory", "Multi-Agent RL"],
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800",
     featured: false,
     links: {
@@ -147,30 +147,30 @@ export const allProjects = [
   },
   {
     id: 7,
-    slug: "object-detection",
-    title: "Real-Time 3D Object Detection",
-    shortDesc: "YOLOv8-based detection system with depth estimation for robotic manipulation in cluttered environments.",
+    slug: "semantic-slam",
+    title: "Semantic SLAM System",
+    shortDesc: "Real-time semantic mapping and localization combining deep learning object detection with traditional SLAM.",
     category: ["Vision", "AI/ML"],
-    tech: ["Python", "PyTorch", "YOLO", "RealSense"],
+    tech: ["C++", "Python", "ORB-SLAM3", "YOLOv8", "ROS 2"],
     image: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=800",
     featured: false,
     links: {
-      github: "https://github.com/username/object-detection",
+      github: "https://github.com/username/semantic-slam",
       demo: null,
       paper: null
     }
   },
   {
     id: 8,
-    slug: "embedded-control",
-    title: "STM32 Motor Control System",
-    shortDesc: "Low-level embedded control for brushless DC motors with PID tuning and real-time telemetry.",
+    slug: "embedded-motor-control",
+    title: "Real-Time Motor Control",
+    shortDesc: "Low-latency embedded motor control system for BLDC motors with FOC and advanced PID tuning.",
     category: ["Embedded", "Control"],
-    tech: ["C", "STM32", "CAN Bus", "RTOS"],
+    tech: ["C", "STM32", "FOC", "CAN Bus", "RTOS"],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
     featured: false,
     links: {
-      github: "https://github.com/username/embedded-control",
+      github: "https://github.com/username/embedded-motor-control",
       demo: null,
       paper: null
     }
