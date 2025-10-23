@@ -22,6 +22,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white">
+      <div className="grid-background" />
       <div className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl">
           {/* Back Button */}
@@ -39,14 +40,14 @@ const ProjectDetail = () => {
               {project.category.map((cat) => (
                 <span 
                   key={cat}
-                  className="text-xs font-mono uppercase px-3 py-1 border border-[#00FF88] text-[#00FF88]"
+                  className="label px-3 py-1 border border-[#38FF62] text-[#38FF62]"
                 >
                   {cat}
                 </span>
               ))}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{project.title}</h1>
-            <p className="text-xl text-white/70 leading-relaxed">{project.description}</p>
+            <h1 className="title-big mb-6">{project.title}</h1>
+            <p className="text-big text-white/80 leading-relaxed">{project.shortDesc}</p>
           </div>
 
           {/* Project Image */}
@@ -58,32 +59,17 @@ const ProjectDetail = () => {
             />
           </div>
 
-          {/* Problem Section */}
-          <div className="mb-12">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Problem Statement
-            </h2>
-            <p className="text-lg text-white/90 leading-relaxed">{project.problem}</p>
-          </div>
-
-          {/* Approach Section */}
-          <div className="mb-12">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Technical Approach
-            </h2>
-            <p className="text-lg text-white/90 leading-relaxed">{project.approach}</p>
-          </div>
-
           {/* Tech Stack */}
           <div className="mb-12">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-              Tech Stack
+            <h2 className="label mb-4">
+              TECH STACK
             </h2>
             <div className="flex flex-wrap gap-3">
-              {project.techStack.map((tech) => (
+              {project.tech.map((tech) => (
                 <span 
                   key={tech}
-                  className="px-4 py-2 bg-[#141414] border border-white/20 font-mono text-sm"
+                  className="label-small px-4 py-2 bg-[#1a1a1a] border border-[#2a2a2a] text-[#38FF62]"
+                  style={{ fontFamily: 'var(--font-mono)' }}
                 >
                   {tech}
                 </span>
@@ -94,55 +80,56 @@ const ProjectDetail = () => {
           {/* Results & Metrics */}
           {project.metrics && (
             <div className="mb-12">
-              <h2 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">
-                Results & Impact
+              <h2 className="label mb-4">
+                RESULTS & IMPACT
               </h2>
-              <p className="text-lg text-white/90 leading-relaxed mb-6">{project.results}</p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {Object.entries(project.metrics).map(([key, value]) => (
-                  <div key={key} className="bg-[#141414] border border-white/10 p-6">
-                    <div className="text-3xl font-bold text-[#00FF88] mb-2">{value}</div>
-                    <div className="text-sm font-mono uppercase text-white/50">{key}</div>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="card">
+                  <div className="text-regular text-[#38FF62] mb-2">{project.metrics.performance}</div>
+                  <div className="label-small text-white/50">PERFORMANCE</div>
+                </div>
+                <div className="card">
+                  <div className="text-regular text-[#38FF62] mb-2">{project.metrics.accuracy}</div>
+                  <div className="label-small text-white/50">ACCURACY</div>
+                </div>
               </div>
             </div>
           )}
 
           {/* Links */}
           <div className="flex flex-wrap gap-4">
-            {project.video && (
+            {project.links?.demo && (
               <a 
-                href={project.video}
+                href={project.links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#00FF88] text-black font-mono text-sm uppercase tracking-wide hover:bg-[#00DD77] transition-colors inline-flex items-center"
+                className="btn-accent inline-flex items-center"
               >
                 <Play size={16} className="mr-2" />
-                Demo Video
+                DEMO VIDEO
               </a>
             )}
-            {project.code && (
+            {project.links?.github && (
               <a 
-                href={project.code}
+                href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-white/20 font-mono text-sm uppercase tracking-wide hover:bg-white/5 transition-all inline-flex items-center"
+                className="btn-primary inline-flex items-center"
               >
                 <Github size={16} className="mr-2" />
-                Source Code
+                SOURCE CODE
               </a>
             )}
-            {project.paper && (
+            {project.links?.paper && (
               <a 
-                href={project.paper}
+                href={project.links.paper}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-white/20 font-mono text-sm uppercase tracking-wide hover:bg-white/5 transition-all inline-flex items-center"
+                className="btn-primary inline-flex items-center"
               >
                 <ExternalLink size={16} className="mr-2" />
-                Paper
+                PAPER
               </a>
             )}
           </div>
