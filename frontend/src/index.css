@@ -26,7 +26,7 @@ code {
   font-family: var(--font-mono);
 }
 
-/* Grid Background - Prominent white grid lines */
+/* Grid Background - Prominent white grid lines (ruler-like) */
 .grid-background {
   position: fixed;
   top: 0;
@@ -35,9 +35,9 @@ code {
   bottom: 0;
   background-color: #0a0a0a;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 100px 100px;
   pointer-events: none;
   z-index: -1;
 }
