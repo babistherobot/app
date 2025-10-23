@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
 import { personalInfo } from '../mockData';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -13,23 +16,45 @@ const Footer = () => {
   ];
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offsetTop = element.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
   const footerLinks = [
     { name: 'HOME', sectionId: 'home' },
-    { name: 'PROJECTS', sectionId: 'projects' },
+    { name: 'PROJECTS', route: '/projects' },
     { name: 'SKILLS', sectionId: 'skills' },
     { name: 'ABOUT', sectionId: 'about' },
     { name: 'CONTACT', sectionId: 'contact' }
   ];
+
+  const handleLinkClick = (link) => {
+    if (link.route) {
+      navigate(link.route);
+    } else if (link.sectionId) {
+      scrollToSection(link.sectionId);
+    }
+  };
 
   return (
     <footer className="relative border-t border-[#2a2a2a] bg-[#0a0a0a] mt-32">
@@ -38,7 +63,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div>
             <div className="label text-[#38FF62] mb-6">
-              ROBOTICSLAB
+              braib
             </div>
             <p className="text-body max-w-xs">
               {personalInfo.tagline}
@@ -51,8 +76,8 @@ const Footer = () => {
             <nav className="flex flex-col gap-3">
               {footerLinks.map((link) => (
                 <button
-                  key={link.sectionId}
-                  onClick={() => scrollToSection(link.sectionId)}
+                  key={link.name}
+                  onClick={() => handleLinkClick(link)}
                   className="text-body hover:text-[#38FF62] transition-colors text-left"
                 >
                   {link.name}
