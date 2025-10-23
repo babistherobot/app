@@ -300,15 +300,19 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
               >
                 <div className="flex flex-col md:flex-row gap-8 mb-8">
-                  {/* Profile Image */}
+                  {/* Profile Image - Larger Size */}
                   <div className="flex-shrink-0">
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-[#38FF62]">
+                    <motion.div 
+                      className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-[#38FF62] shadow-lg shadow-[#38FF62]/20"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <img
                         src={personalInfo.profileImage}
                         alt={personalInfo.name}
                         className="w-full h-full object-cover"
                       />
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-regular mb-6">Background</h3>
