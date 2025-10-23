@@ -87,14 +87,9 @@ const Home = () => {
       {/* Featured Projects Section */}
       <section id="projects" className="relative py-24">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <p className="label mb-4">SELECTED WORK</p>
-              <h2 className="title-big">FEATURED PROJECTS</h2>
-            </div>
-            <Link to="/projects" className="btn-primary">
-              VIEW ALL PROJECTS
-            </Link>
+          <div className="mb-16">
+            <p className="label mb-4">SELECTED WORK</p>
+            <h2 className="title-big">FEATURED PROJECTS</h2>
           </div>
 
           <div className="space-y-8">
