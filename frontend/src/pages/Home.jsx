@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, BookOpen, Mail, ExternalLink, GraduationCap, Briefcase, Award, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { personalInfo, about, featuredProjects, skills, publications, talks } from '../mockData';
