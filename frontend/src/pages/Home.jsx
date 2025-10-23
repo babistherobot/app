@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, BookOpen, Mail, ExternalLink, GraduationCap, Briefcase, Award, Play } from 'lucide-react';
+import { Github, Linkedin, BookOpen, Mail, ExternalLink, GraduationCap, Briefcase, Award, Play, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { personalInfo, about, featuredProjects, skills, publications, talks } from '../mockData';
+import { personalInfo, about, allProjects, skills, publications, talks } from '../mockData';
 
 const Home = () => {
+  const [activeFilter, setActiveFilter] = useState('ALL');
+
   const socialLinks = [
     { icon: Github, href: personalInfo.github, label: 'GitHub' },
     { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
     { icon: BookOpen, href: personalInfo.scholar, label: 'Google Scholar' }
   ];
+
+  const categories = ['ALL', 'AI/ML', 'Multi-Robot', 'Control', 'Vision', 'Embedded'];
+
+  const filteredProjects = activeFilter === 'ALL'
+    ? allProjects
+    : allProjects.filter(project => project.category.includes(activeFilter));
 
   // Animation variants
   const containerVariants = {
